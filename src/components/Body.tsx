@@ -1,7 +1,5 @@
-import React from "react";
-
 const Body = () => {
-  return <div>Body</div>;
+  return <div className="h-screen">Body</div>;
 };
 
 export default Body;
