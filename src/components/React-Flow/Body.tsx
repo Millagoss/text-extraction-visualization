@@ -49,7 +49,6 @@ export default function App() {
           height: 20,
           color: "#FF0072",
         },
-        label: "marker size and color",
         style: {
           strokeWidth: 2,
           stroke: "#FF0072",
