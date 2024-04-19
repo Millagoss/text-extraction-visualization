@@ -1,4 +1,4 @@
-import Body from "./components/Body";
+import Body from "./components/React-Flow/Body";
 import Sidebar from "./components/Sidebar";
 
 function App() {

@@ -4,7 +4,7 @@ export const initialNodes: Node[] = [
   {
     id: "1",
     position: { x: 0, y: 0 },
-    data: { label: "1" },
+    data: { label: "Initial Node" },
     type: "ParentNodeType",
   },
 ];

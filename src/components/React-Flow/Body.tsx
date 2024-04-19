@@ -9,7 +9,6 @@ import ReactFlow, {
   Connection,
   NodeTypes,
   EdgeTypes,
-  useReactFlow,
 } from "reactflow";
 
 import "reactflow/dist/style.css";
@@ -18,7 +17,7 @@ import {
   fitViewOptions,
   initialEdges,
   initialNodes,
-} from "./Workfow.constants";
+} from "../../utils/Workfow.constants";
 import ParentNode from "./ParentNode";
 import ChildrenNode from "./ChildrenNode";
 import CustomEdge from "./CustomEdge";
