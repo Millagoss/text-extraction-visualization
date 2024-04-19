@@ -3,7 +3,7 @@ import Sidebar from "./components/Sidebar";
 
 function App() {
   return (
-    <div className="bg-primary-body h-screen flex flex-row">
+    <div className="bg-primary-body h-auto sm:h-screen flex flex-col sm:flex-row">
       <Sidebar />
       <Body />
     </div>
