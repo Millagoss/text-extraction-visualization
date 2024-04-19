@@ -9,6 +9,7 @@ import ReactFlow, {
   Connection,
   NodeTypes,
   EdgeTypes,
+  MarkerType,
 } from "reactflow";
 
 import "reactflow/dist/style.css";
@@ -42,6 +43,17 @@ export default function App() {
         id: uuidv4(),
         animated: true,
         type: "CustomEdge",
+        markerEnd: {
+          type: MarkerType.ArrowClosed,
+          width: 20,
+          height: 20,
+          color: "#FF0072",
+        },
+        label: "marker size and color",
+        style: {
+          strokeWidth: 2,
+          stroke: "#FF0072",
+        },
       };
       setEdges((prevEdges) => addEdge(newEdge, prevEdges));
     },
