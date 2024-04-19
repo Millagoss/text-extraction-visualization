@@ -1,7 +1,5 @@
-import { IconPlus, IconTrash } from "@tabler/icons-react";
+import { IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
-import { useReactFlow } from "reactflow";
-import { v4 as uuidv4 } from "uuid";
 
 const Sidebar = () => {
   const [inputText, setInputText] = useState("");
@@ -23,10 +21,8 @@ const Sidebar = () => {
   const handleRemoveMenuItem = (item: string) =>
     setMenuItems((prev) => prev.filter((i) => i !== item));
 
-  const handleAddItemAsNode = (item: string) => {};
-
   return (
-    <div className="w-1/3 border-r-2 h-full border-primary-border p-4 rounded-lg shadow-md">
+    <div className="w-1/3 border-r-2 h-full border-primary-border p-4 rounded-lg shadow-md overflow-scroll">
       <div>
         <textarea
           className="w-full min-h-80 px-4 py-2 mb-4 border border-gray-300 rounded-md resize-none focus:outline-none focus:border-blue-500"
@@ -66,13 +62,6 @@ const Sidebar = () => {
                     <IconTrash
                       size="20px"
                       className="text-red-300 cursor-pointer hover:text-red-500 transition-all"
-                    />
-                  </button>
-                  <button title="Add item as a node">
-                    <IconPlus
-                      onClick={() => handleAddItemAsNode(item)}
-                      size="20px"
-                      className="text-gray-400 cursor-pointer hover:text-gray-500 transition-all"
                     />
                   </button>
                 </div>

@@ -19,7 +19,7 @@ function CustomEdge(props: EdgeProps) {
   } = props;
 
   const { setEdges } = useReactFlow();
-  const [labelX, labelY] = getBezierPath({
+  const [path, labelX, labelY] = getBezierPath({
     sourceX,
     sourceY,
     targetX,
@@ -33,7 +33,7 @@ function CustomEdge(props: EdgeProps) {
       <EdgeLabelRenderer>
         <IconX
           onClick={() => setEdges((pE) => pE.filter((e) => e.id !== id))}
-          className="absolute text-red-500 cursor-pointer"
+          className="absolute bg-gray-200 rounded-md hover:scale-150 transition-all  text-red-500 cursor-pointer"
           size={"20px"}
           style={{
             transform: `translate(-50%, -50%) translate(${labelX}px, ${labelY}px)`,
