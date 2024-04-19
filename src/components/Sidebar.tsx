@@ -1,9 +1,15 @@
 import { IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
+import { v4 as uuidv4 } from "uuid";
+
+type menuItems = {
+  id: string;
+  label: string;
+};
 
 const Sidebar = () => {
   const [inputText, setInputText] = useState("");
-  const [menuItems, setMenuItems] = useState<string[]>([]);
+  const [menuItems, setMenuItems] = useState<menuItems[]>([]);
 
   const extractMenuItems = (text: string) => {
     const regex = /^(?:\d+\.\s*|\d+:\s*|\d+-\s*).+/gm;
@@ -12,19 +18,19 @@ const Sidebar = () => {
   };
 
   const handleExtractClick = () => {
-    console.log("hello");
-
     const extractedItems = extractMenuItems(inputText);
-    setMenuItems(extractedItems);
+    extractedItems.forEach((item) => {
+      setMenuItems((prev) => [...prev, { id: uuidv4(), label: item }]);
+    });
   };
 
   const handleClear = () => setInputText("");
 
-  const handleRemoveMenuItem = (item: string) =>
-    setMenuItems((prev) => prev.filter((i) => i !== item));
+  const handleRemoveMenuItem = (item: menuItems) =>
+    setMenuItems((prev) => prev.filter((i) => i.id !== item.id));
 
   return (
-    <div className="w-full border-r-2 h-full border-primary-border p-4 mt-10 sm:mt-0 rounded-lg shadow-md overflow-scroll sm:w-1/3">
+    <div className="w-full border-r-2 h-full border-primary-border p-4 mt-10 sm:mt-0 rounded-lg shadow-md overflow-scroll sm:w-1/3 overflow-x-hidden">
       <div>
         <textarea
           className="w-full min-h-40 sm:min-h-80 px-4 py-2 mb-4 border border-gray-300 rounded-md resize-none focus:outline-none focus:border-blue-500"
@@ -55,7 +61,7 @@ const Sidebar = () => {
                 key={index}
                 className="px-4 items-center flex justify-between py-2 mb-2 bg-white border border-gray-300 rounded-md"
               >
-                {item}
+                {item.label}
                 <div title="add to node" className="flex gap-1">
                   <button
                     title="Delete Menu-item"
