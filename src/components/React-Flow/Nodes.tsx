@@ -1,6 +1,6 @@
 import { IconCheck, IconEdit, IconPlus, IconTrash } from "@tabler/icons-react";
 import React, { useState } from "react";
-import { Node, useReactFlow } from "reactflow";
+import { MarkerType, Node, useReactFlow } from "reactflow";
 import { v4 as uuidv4 } from "uuid";
 
 const Nodes = ({ id, label }: { id: string; label: string }) => {
@@ -49,6 +49,17 @@ const Nodes = ({ id, label }: { id: string; label: string }) => {
       target: childrenId,
       animated: true,
       type: "CustomEdge",
+      markerEnd: {
+        type: MarkerType.ArrowClosed,
+        width: 20,
+        height: 20,
+        color: "#FF0072",
+      },
+      label: "marker size and color",
+      style: {
+        strokeWidth: 2,
+        stroke: "#FF0072",
+      },
     });
   };
 
