@@ -53,8 +53,8 @@ export default function App() {
       style={{ width: "100vw", height: "100vh" }}
       className="static sm:relative"
     >
-      <div className="min-h-12 absolute top-0 left-0 w-full z-50 bg-primary-body shadow-sm flex items-center justify-center font-serif">
-        <h2 className="text-xl font-bold text-gray-500">
+      <div className="min-h-12 absolute top-0 left-0 w-full z-50 bg-primary-body sm:shadow-sm flex items-center justify-center font-serif">
+        <h2 className="text-sm sm:text-xl font-bold text-gray-500">
           ReactFlow Menu Extraction and Visualization
         </h2>
       </div>
