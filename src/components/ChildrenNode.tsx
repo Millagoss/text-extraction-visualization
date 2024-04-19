@@ -1,9 +1,10 @@
 import { IconEdit, IconPlus, IconTrash } from "@tabler/icons-react";
 import { useState } from "react";
 import { Handle, Node, NodeProps, Position, useReactFlow } from "reactflow";
+import { v4 as uuidv4 } from "uuid";
 
 function ChildrenNode({ data: { label }, id }: NodeProps<{ label: string }>) {
-  const { setNodes, addNodes, getNodes, addEdges, getEdges } = useReactFlow();
+  const { setNodes, addNodes, getNode, addEdges, getEdges } = useReactFlow();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const handleClick = () => {
     setNodes((prev: Node[]) => {
@@ -21,7 +22,7 @@ function ChildrenNode({ data: { label }, id }: NodeProps<{ label: string }>) {
           {
             ...node,
             id: `${prev.length + 1}`,
-            position: { x: node.position.x + 100, y: node.position.y + 100 },
+            position: { x: node.position.x + 50, y: node.position.y + 100 },
           },
         ];
       }
@@ -30,15 +31,18 @@ function ChildrenNode({ data: { label }, id }: NodeProps<{ label: string }>) {
   };
 
   const handleAddChildrenNode = () => {
-    const childrenId = (getNodes().length + 1).toString();
+    const childrenId = uuidv4();
+    const node = getNode(id);
+    const x = node?.position ? node?.position.x + 40 : 0;
+    const y = node?.position ? node?.position.y + 60 : 0;
     addNodes({
       id: childrenId,
-      position: { x: 0, y: 0 },
+      position: { x, y },
       data: { label: "new node" },
       type: "ChildrenNodeType",
     });
     addEdges({
-      id: `e${id}-${getEdges().length + 1}`,
+      id: uuidv4(),
       source: id,
       target: childrenId,
       animated: true,

@@ -22,6 +22,7 @@ import {
 import ParentNode from "./ParentNode";
 import ChildrenNode from "./ChildrenNode";
 import CustomEdge from "./CustomEdge";
+import { v4 as uuidv4 } from "uuid";
 
 const nodeType: NodeTypes = {
   ParentNodeType: ParentNode,
@@ -39,7 +40,7 @@ export default function App() {
     (connection: Connection) => {
       const newEdge = {
         ...connection,
-        id: edges.length + 1,
+        id: uuidv4(),
         animated: true,
         type: "CustomEdge",
       };
@@ -49,8 +50,8 @@ export default function App() {
   );
 
   return (
-    <div style={{ width: "100vw", height: "100vh" }}>
-      <div className="min-h-12 bg-primary-body shadow-sm flex items-center justify-center font-serif">
+    <div style={{ width: "100vw", height: "100vh" }} className="relative ">
+      <div className="min-h-12 absolute top-0 left-0 w-full z-50 bg-primary-body shadow-sm flex items-center justify-center font-serif">
         <h2 className="text-xl font-bold text-gray-500">
           ReactFlow Menu Extraction and Visualization
         </h2>
