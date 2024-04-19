@@ -6,12 +6,14 @@ const Sidebar = () => {
   const [menuItems, setMenuItems] = useState<string[]>([]);
 
   const extractMenuItems = (text: string) => {
-    const regex = /^(?:\d+[:.-] ).+/gm;
+    const regex = /^(?:\d+\.\s*|\d+:\s*|\d+-\s*).+/gm;
     const matches = text.match(regex);
     return matches ? matches.map((match) => match.trim()) : [];
   };
 
   const handleExtractClick = () => {
+    console.log("hello");
+
     const extractedItems = extractMenuItems(inputText);
     setMenuItems(extractedItems);
   };
